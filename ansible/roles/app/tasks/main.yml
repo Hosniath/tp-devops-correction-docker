@@ -1,0 +1,11 @@
+- name: Launch backend app
+  docker_container:
+    name: simple-api
+    image: denila/tp-devops-simple-api:latest
+    env:
+      DATABASE_HOST: "database"
+      DATABASE_PASSWORD: "pwd"
+    networks:
+      - name: my-network
+  vars:
+    ansible_python_interpreter: /opt/docker_venv/bin/python
