@@ -1,0 +1,8 @@
+- name: Launch front
+  docker_container:
+    name: front
+    image: denila/tp-devops-front:latest
+    networks:
+      - name: my-network
+  vars:
+    ansible_python_interpreter: /opt/docker_venv/bin/python
