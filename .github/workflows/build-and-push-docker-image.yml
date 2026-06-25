@@ -48,25 +48,3 @@ jobs:
           context: ./front
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-front:latest
           push: true
-
-  deploy:
-    needs: build-and-push-docker-image
-    runs-on: ubuntu-24.04
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup SSH
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 400 ~/.ssh/id_rsa
-          echo "${{ secrets.SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
-
-      - name: Install Ansible
-        run: pip install ansible
-
-      - name: Run Ansible playbook
-        run: |
-          cd ansible
-          ansible-playbook -i inventories/setup.yml playbook.yml
