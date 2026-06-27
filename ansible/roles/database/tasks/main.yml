@@ -3,7 +3,7 @@
     name: database
     image: denila/tp-devops-database:latest
     env:
-      POSTGRES_PASSWORD: "pwd"
+      POSTGRES_PASSWORD: "{{ db_password }}"
     volumes:
       - db-volume:/var/lib/postgresql/data
     networks:

@@ -3,8 +3,8 @@
     name: simple-api
     image: denila/tp-devops-simple-api:latest
     env:
-      DATABASE_HOST: "database"
-      DATABASE_PASSWORD: "pwd"
+      DATABASE_HOST: "{{ db_host }}"
+      DATABASE_PASSWORD: "{{ db_password }}"
     networks:
       - name: my-network
   vars:
